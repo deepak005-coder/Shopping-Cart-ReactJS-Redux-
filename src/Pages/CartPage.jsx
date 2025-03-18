@@ -48,7 +48,15 @@ const CartPage = () => {
             {/* Quantity Controls */}
             <div className="flex items-center">
               <button
-                className="px-2 py-1 border rounded-l cursor-pointer"
+                className={`px-2 py-1 border rounded-l cursor-pointer ${
+                  item.quantity === 1 ? "bg-gray-400 cursor-not-allowed" : ""
+                }`}
+                disabled={item.quantity == 1}
+                // style={
+                //   item.quantity === 1
+                //     ? { backgroundColor: "#d9d6d6", cursor: "not-allowed" }
+                //     : {}
+                // }
                 onClick={() => dispatch(reducefromCart(item))}
               >
                 -
@@ -98,7 +106,7 @@ const CartPage = () => {
             </span>
           </p>
 
-          <button className="w-full bg-yellow-500 text-white py-2 mt-4 rounded-lg">
+          <button className="w-full bg-yellow-500 text-white py-2 mt-4 rounded-lg cursor-pointer hover:bg-yellow-600">
             Place Order
           </button>
         </div>
